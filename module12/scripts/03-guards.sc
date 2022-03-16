@@ -16,7 +16,7 @@ describeNumber(-101)
 // This is the wrong way to do it!
 def badDescribeNumber(x: Int) = x match {
   case 0 =>                        "zero"
-  case n => if (n > 0 && n < 100)  "smallish positive"
+  case n => if (n > 0 && n < 100)  "smallish positive" //else ()
   case n => if (n > 0)             "large positive"
   case n => if (n < 0 && n > -100) "smallish negative"
   case _ =>                        "large negative"

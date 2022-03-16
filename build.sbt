@@ -2,7 +2,7 @@ name := "Scala-Applied-Exercises"
 
 version in ThisBuild := "1.0-SNAPSHOT"
 
-scalaVersion in ThisBuild := "2.12.6"
+scalaVersion in ThisBuild := "2.12.11"
 
 scalacOptions in ThisBuild += "-deprecation"
 

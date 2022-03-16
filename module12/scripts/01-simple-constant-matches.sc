@@ -27,5 +27,4 @@ def pair(s: String): String = s match {
 
 pair("fish")
 pair("tea")
-
 pair("universe")
