@@ -29,11 +29,20 @@ if (s.isInstanceOf[String]) {
 
 // but beware type erasure:
 
+def erasureCheck(x: Any): String = x match {
+  case _: List[Int] => "hello"
+  case _ => "hi"
+
+
+erasureCheck(List[Int](1,2,3,4))
+erasureCheck(List[String]("hi", "hello"))
+
 def withIntStringMap(x: Any): Int = x match {
-  case m: Map[_, _] =>
+  case m: Map[Int, String] =>
+ // case m: Map[_,_] =>
     m.head._1 match {
       case i: Int => i * i
-      case _ => 0
+      case _ => 22
     }
   case _ => 0
 }

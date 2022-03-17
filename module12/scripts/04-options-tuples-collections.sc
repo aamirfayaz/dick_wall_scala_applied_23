@@ -46,7 +46,7 @@ matchList(Nil)
 
 def matchSeq(xs: Vector[Int]): String = xs match {
   case 1 +: 2 +: rest => s"A 1, 2 vector followed by $rest"
-  case Vector(a, b, rest @ _*) => s"A vector of at least 2 items, starting with $a, $b, rest is $rest"
+  case Vector(a, b, rest@ _*) => s"A vector of at least 2 items, starting with $a, $b, rest is $rest"
   case Vector(a) => s"A single element vector of $a"
   case Vector() => "The empty vector"
 }

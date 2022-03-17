@@ -1,6 +1,10 @@
 case class Address(street: String, city: String, postCode: Option[String])
 case class Person(name: String, phone: Option[String], address: Option[Address])
 
+/**
+ * Since Case class gets default methods like hashCode, equals:
+ * it comes with cost, one case class can't extend other case class
+ */
 val harry = Person("Harry", None, Some(Address(
   "123 Little Whinging way", "Purley", Some("PN22 6RT")
 )))
