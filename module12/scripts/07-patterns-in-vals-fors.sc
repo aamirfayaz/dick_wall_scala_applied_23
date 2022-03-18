@@ -1,3 +1,7 @@
+val tuple3 = (1, "aamir", true)
+val (id:Int, name: String, mad:Boolean) = tuple3
+val (a, b, c) = tuple3
+
 val numbersMap = Map(1 -> "one", 2 -> "two", 3 -> "three")
 
 for ((k, v) <- numbersMap) {
@@ -21,18 +25,29 @@ val Person(name, phone, Some(Address(_, _, postCode))) = harry
 // val Person(name2, phone2, Some(Address(_, _, postCode2))) = sally
 
 
-val people = List(harry, harry2, sally, sally2)
+val people: List[Person] = List(harry, harry2, sally, sally2)
 
 for {
   Person(name, phone, _) <- people
   if phone.isDefined
 } yield name -> phone.get
 
+case class Measurement(length: Option[Double])
+val mList = List(Measurement(None), Measurement(None), Measurement(None), Measurement(None))
+
+val fCT = for {
+  Measurement(length) <- mList
+  if length.isDefined
+} yield 1 -> length.get
+
+mList.filter(_.length.isDefined).map(x => (1 -> x.length.get))
+
 
 // pattern matches as partial functions
 
 numbersMap.map {
   case (1, w) => s"It's 1 and the word is $w"
+  // Match error case (100, v) => s"Not 1 but (0, $v)"
   case (k, v) => s"Not 1 but ($k, $v)"
 }
 

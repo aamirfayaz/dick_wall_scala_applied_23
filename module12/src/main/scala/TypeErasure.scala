@@ -1,4 +1,7 @@
 object TypeErasure extends App {
+
+  sealed class Measure(x: Int, y: Int)
+   class Price(x: Int)
   def erasureCheck(x: Any): Any = x match {
     case l: List[Int] => "hello"
 //    case l: List[Int] => l.head - 2
@@ -16,7 +19,7 @@ object TypeErasure extends App {
    */
   def withIntStringMap(x: Any): Any = x match {
     case m: Map[Int, String] => "hello"
-    case m: Map[Int, String] => m.head._1 - 2
+   // case m: Map[Int, String] => m.head._1 - 2
    // case m: Map[_, _] => m.head._1 - 2
     case _                   => 0
   }

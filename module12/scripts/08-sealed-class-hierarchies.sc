@@ -1,7 +1,7 @@
+
 sealed class AccountType
 case object Checking extends AccountType
 case object Savings extends AccountType
-
 
 def checking(at: AccountType): Boolean = at match {
   case Checking => true
@@ -14,3 +14,5 @@ def matchList(l: List[Int]): String = {
     case a :: rest => "it's a non empty list"
   }
 }
+
+//not exhaustive pattern match

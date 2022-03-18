@@ -231,6 +231,7 @@ class Module12Solutions extends FunSpec with Matchers with StopOnFirstFailure wi
 
         // should still have 200 left
         Account.applyTransaction(BalanceEnquiry(Checking, "003")) should be (-600)
+        //Account.applyTransaction(Withdrawal(Checking, "003", 500))
       }
     }
 
