@@ -15,14 +15,14 @@ object TypeErasure extends App {
    * However, the actual runtime class is String, thus the ClassCastException
    */
   def withIntStringMap(x: Any): Any = x match {
-    //case m: Map[Int, String] => "hello"
+    case m: Map[Int, String] => "hello"
     case m: Map[Int, String] => m.head._1 - 2
    // case m: Map[_, _] => m.head._1 - 2
     case _                   => 0
   }
 
   println(withIntStringMap(Map(1 -> "one")))
-  withIntStringMap(List(1))
-  withIntStringMap(Map("One" -> 1))
+  println(withIntStringMap(List(1)))
+  println(withIntStringMap(Map("One" -> 1)))
 
 }
