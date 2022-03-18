@@ -2,6 +2,7 @@ val oneTwo = List(1,2)
 val threeFour = 3 :: 4 :: Nil
 val oneTwoThreeFour = oneTwo ::: threeFour
 
+oneTwoThreeFour.tail.tail eq threeFour //c
 
 Vector('a', 'b', 'c').toList
 Set(1.0, 2.0, 3.0).toList

@@ -42,7 +42,7 @@ object CoordSeq {
 }
 
 coordsStr match {
-  case CoordSeq(c @ _*) =>
+  case CoordSeq(c@_*) =>
     c foreach println
 }
 
