@@ -12,6 +12,7 @@ words foreach println
 
 
 words.filter(_.contains("a"))
+words.filter(_.contains("a")).headOption // replace with find
 words.filter(_.contains("f"))
 
 words.find(_.contains("a"))

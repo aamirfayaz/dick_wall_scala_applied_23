@@ -1,4 +1,4 @@
-val nums1 = (1 to 5).toList
+val nums1: List[Int] = (1 to 5).toList
 
 nums1.last
 nums1.init
@@ -6,6 +6,10 @@ nums1.length
 
 nums1.reverse
 
+/**
+ * Now, operations that depend on positions,
+ * so a time complexity between O(1) and O(n)
+ */
 nums1(3)
 
 nums1.drop(3)
@@ -18,6 +22,10 @@ val allNums = nums1 ::: nums2
 allNums.drop(50)
 allNums.take(50)
 
+/**
+ * we don't throw exception in FP mostly, exceptions are
+ * side-effects and not very functional
+ */
 allNums.drop(8).headOption
 allNums.drop(20).headOption
 

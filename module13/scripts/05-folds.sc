@@ -22,6 +22,7 @@ words.mkString("[", ",", "]")
 
 
 // beware reduce on empty Lists
+//java.lang.UnsupportedOperationException: empty.reduceLeft
 List.empty[Int].reduceLeft(_ + _)
 
 

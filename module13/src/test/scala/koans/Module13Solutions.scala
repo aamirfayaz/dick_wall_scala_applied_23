@@ -75,9 +75,15 @@ class Module13Solutions extends FunSuite with Matchers with StopOnFirstFailure w
   }
 
   test("Combine list of sets with list of new chars") {
+    val seq1 = "GTAAGCTTAC"
+    val seq2 = "GACAGCT-AC"
+    val seq3 = "G-AACCTAAC"
     val startSet = stringToSetOfChars(seq1)
+    println(startSet)
     val nextSet = combineZippedSetsAndString(startSet, seq2)
+    println(nextSet)
     val finalSet = combineZippedSetsAndString(nextSet, seq3)
+    println(finalSet)
     finalSet.toString should be ("List(Set(G), Set(T, A, -), Set(A, C), Set(A), Set(G, C), Set(C), Set(T), Set(T, -, A), Set(A), Set(C))")
   }
 
@@ -133,10 +139,12 @@ class Module13Solutions extends FunSuite with Matchers with StopOnFirstFailure w
       case l : List[Int] => {
           val head :: rest = l
           val (lower, remaining) = rest.partition(_ < head)
+        /*lower should be (List(3, 7, 9, 2, 1, 8))
+        remaining should be (List(21, 13, 15, 10, 16, 12))*/
           mysteryFunction(lower) ::: List(head) ::: mysteryFunction(remaining)
       }
     }
-
+//  val numbers = List(10, 3, 21, 7, 9, 13, 15, 10, 16, 2, 1, 8, 12)
   test("Can you tell what it is yet") {
     val newList = mysteryFunction(numbers)
     newList should be (List(1, 2, 3, 7, 8, 9, 10, 10, 12, 13, 15, 16, 21))

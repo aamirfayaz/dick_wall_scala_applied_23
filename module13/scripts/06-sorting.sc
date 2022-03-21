@@ -1,6 +1,8 @@
 case class Person(name: String, age: Int)
 
-val xs = List(Person("Harry", 25), Person("Sally", 23), Person("Fred", 31))
+val xs = List(Person("Harry", 25),
+  Person("Sally", 12),
+  Person("Sally", 23), Person("Fred", 31))
 
 xs.sortWith((p1, p2) => p1.age < p2.age)
 xs.sortBy(_.name)
@@ -14,6 +16,7 @@ implicit object PersonOrdering extends Ordering[Person] {
   override def compare(x: Person, y: Person) = {
     if (x.name == y.name) x.age - y.age
     else if (x.name > y.name) 1 else -1
+    // 1 means it will come first 
   }
 }
 
