@@ -56,4 +56,7 @@ vowelsMut('y') = false
 vowelsMut
 vowelsMut('y')
 
+val a = Array(1)
+a(0) = 10
+a
 

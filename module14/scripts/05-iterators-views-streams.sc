@@ -1,10 +1,12 @@
-val nums = List.range(1, 21)
+val nums: List[Int] = List.range(1, 21)
 
-val numsIter = nums.iterator
+val numsIter: Iterator[Int] = nums.iterator
 
 numsIter.hasNext
 
 // An example of what not to do!
+//here, the call to .length exhausts the iterator
+//Either stick to .hasNext and .next() or convert to another collection
 // if (numsIter.length > 0) numsIter.next()
 
 
