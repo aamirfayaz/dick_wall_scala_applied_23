@@ -52,3 +52,19 @@ val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).
   map { case(x, y) => x + y }
 
 fibs.take(20).toList
+
+def fibRecursion(a: Int = 0, b: Int = 1):Stream[Int] = {
+  Stream.cons(a, fibRecursion(b, a + b))
+}
+
+fibRecursion().take(10).toList
+
+def fibRecIterator(): Stream[Int] = {
+  Stream.iterate((0, 1)) { case (a, b) =>
+    (b, (a + b))
+  }.map(_._1)
+}
+
+fibRecIterator().take(10).toList
+val simpleStream = Stream.continually(1)
+simpleStream.take(10).toList
