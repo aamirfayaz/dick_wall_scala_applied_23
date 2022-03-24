@@ -20,6 +20,7 @@ xs == s
 
 val arr = Array(1,2,3,4)
 xs == arr
+xs sameElements arr
 xs == arr.deep
 
 xs.toVector

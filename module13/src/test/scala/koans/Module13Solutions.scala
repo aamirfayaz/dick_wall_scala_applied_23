@@ -139,8 +139,6 @@ class Module13Solutions extends FunSuite with Matchers with StopOnFirstFailure w
       case l : List[Int] => {
           val head :: rest = l
           val (lower, remaining) = rest.partition(_ < head)
-        /*lower should be (List(3, 7, 9, 2, 1, 8))
-        remaining should be (List(21, 13, 15, 10, 16, 12))*/
           mysteryFunction(lower) ::: List(head) ::: mysteryFunction(remaining)
       }
     }
