@@ -1,5 +1,14 @@
 import scala.collection.SeqView
 
+/**
+Scala has several data structures to support lazy operations: Stream, Iterator, and View.
+ These collections are non-strict because all computations on them are deferred.
+ */
+
+/**
+ * An iterator defined for any collection does not load the entire collection into the memory but loads elements
+ * one after the other. Therefore, iterators are useful when the data is too large for the memory.
+ */
 val nums: List[Int] = List.range(1, 21)
 
 val numsIter: Iterator[Int] = nums.iterator
@@ -10,7 +19,10 @@ numsIter.hasNext
 //here, the call to .length exhausts the iterator
 //Either stick to .hasNext and .next() or convert to another collection
 //if (numsIter.length > 0) numsIter.next() //java.util.NoSuchElementException: next on empty iterator
-
+//same here
+/*val itr = Iterator(1, 2, 3)
+itr foreach println
+itr.next*/
 
 /**
  * view takes a base collection and executes transformer methods on that collection lazily
@@ -55,7 +67,9 @@ val res1: List[Int] = List(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
 
  */
 
-
+/**
+ * Actually, Stream is a List whose tail is a lazy val
+ */
 val numsFromOne = Stream.from(1)
 
 val firstTenNums = numsFromOne.take(10)
@@ -73,6 +87,12 @@ val factorial: Stream[BigInt] = BigInt(1) #:: factorial.zip(Stream.from(2)).
 val firstTenFacs = factorial.take(10)
 
 firstTenFacs.toList
+
+def fact(x: Int, y: Int): Stream[Int] = {
+  Stream.cons(x, fact(x * (y + 1), y + 1))
+}
+
+fact(1, 1).take(10).toList
 
 
 val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).
@@ -95,3 +115,6 @@ def fibRecIterator(): Stream[Int] = {
 fibRecIterator().take(10).toList
 val simpleStream = Stream.continually(1)
 simpleStream.take(10).toList
+
+//simpleStream.length , runs forever
+// #:: --> lazy cons
