@@ -18,3 +18,28 @@ xs match {
     println(s"a = $a, rest = $rest")
 }
 //MatchError at runtime
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

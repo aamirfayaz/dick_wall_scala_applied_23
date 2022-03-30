@@ -1,8 +1,8 @@
 import scala.collection.SeqView
 
 /**
-Scala has several data structures to support lazy operations: Stream, Iterator, and View.
- These collections are non-strict because all computations on them are deferred.
+  Scala has several data structures to support lazy operations: Stream, Iterator, and View.
+  These collections are non-strict because all computations on them are deferred.
  */
 
 /**

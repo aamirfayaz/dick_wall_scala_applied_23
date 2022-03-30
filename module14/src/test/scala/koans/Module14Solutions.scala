@@ -86,7 +86,7 @@ class Module14Solutions extends FunSuite with Matchers with StopOnFirstFailure w
     val comboListWithIndex = comboSetsForSequences(listOfSeqs).zipWithIndex
     val filteredListWithIndex = for ((set, idx) <- comboListWithIndex if (set.size > 1)) yield (idx, set)
 
-    val mutationMap = Map.empty ++ filteredListWithIndex
+    val mutationMap: Map[Int, Set[Char]] = Map.empty ++ filteredListWithIndex
 
     mutationMap should be (Map(0 -> Set('G', 'C'), 1 -> Set('T', 'A', '-'), 2 -> Set('A', 'C'), 4 -> Set('G', 'C'), 7 -> Set('T', '-', 'A')))
   }
@@ -102,7 +102,7 @@ class Module14Solutions extends FunSuite with Matchers with StopOnFirstFailure w
     val t = (1,3,5,"seven")  // a tuple
 
     // convert it below
-    val tAsList = t.productIterator.toList
+    val tAsList: List[Any] = t.productIterator.toList
 
     tAsList should be (List(1,3,5,"seven"))
 

@@ -19,8 +19,6 @@ for ((num, word) <- numWords) {
 
 
 val tm = immutable.TreeMap.empty[Int, String] ++ numWords
-
-
 val mm = mutable.Map.empty[Int, String] ++ numWords
 
 mm -= 2
@@ -42,8 +40,4 @@ val evens = (for (i <- 1 to 5) yield i -> (i % 2 == 0)).toMap
 
 evens.map(_.swap) // coz map is maintaining uniqueness
 
-val m: Map[Int, String] = immutable.HashMap(
-  1 -> "hone bache khen",
-  2 -> "bee",
-  3 -> "hone gis khe"
-)
+

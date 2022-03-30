@@ -19,3 +19,6 @@ popMutableQueue(mQ)
 immQ
 
 mQ
+
+val imSeq = Seq(1,2,3,4)
+imSeq.updated(1, 100)

@@ -6,6 +6,8 @@ scalaVersion in ThisBuild := "2.12.11"
 
 scalacOptions in ThisBuild += "-deprecation"
 
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.4"
+
 libraryDependencies in ThisBuild ++= Seq(
   "org.scalactic"  %% "scalactic"  % "3.0.4",
   "org.scalatest"  %% "scalatest"  % "3.0.4"  % Test,
