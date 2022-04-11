@@ -1,24 +1,41 @@
 import scala.concurrent._
-import duration._
-import ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success, Try}
 
 // failure
 
-val success = Future( 2 / 1 )
-val failure = Future( 1 / 0 )
+val success: Future[Int] = Future( 2 / 1 )
+val failure: Future[Int] = Future( 1 / 0 )
 
-Await.ready(failure, 1.second)
+val r1: failure.type = Await.ready(failure, 1.second)
+Thread.sleep(2000)
+r1
+//val r2: Int = Await.result(failure, 1.second)
 
-failure.value
+val itIs: Option[Try[Int]] = failure.value
 
-failure.failed
+ failure.failed
 
+
+Thread.sleep(1000)
+val computation: Future[Int] = Future{ Thread.sleep(2000);11/2}
+val n:Future[Int] = Await.ready(computation, 1.second)
+
+n onComplete  {
+  case scala.util.Success(s) => "voila"
+  case scala.util.Failure(s) => ":()"
+}
+/**
+ * Await.ready and Await.result both throw java.util.concurrent.TimeoutException
+   if future is not returned before the mentioned time, however, .ready doesn't
+   evaluate the result whereas .ready will evaluate the result.
+ */
 // Await.result(failure, 1.second)
 
 def timeIt[A](fn: => A): A = {
   val start = System.currentTimeMillis()
-  val a = fn
+  val a: A = fn
   println(s"${System.currentTimeMillis() - start} ms")
   a
 }
@@ -48,14 +65,14 @@ timeIt {
 val fs = Future.successful(10)
 val ff = Future.failed(new IllegalArgumentException("nope!"))
 
-val fr = ff.recover {
-  case _: IllegalArgumentException => 22
+val fr: Future[String] = ff.recover[String] {
+  case _: IllegalArgumentException => 22.toString
 }
 
 Await.result(fr, 1.second)
 
 val ff2 = Future.failed(new IllegalStateException("Again, nope!"))
-val fr2 = ff2.recoverWith {
+val fr2: Future[Int] = ff2.recoverWith {
   case _: IllegalArgumentException => Future.successful(22)
 }
 

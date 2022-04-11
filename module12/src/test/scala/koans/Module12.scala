@@ -43,7 +43,7 @@ case class Withdrawal(accountType: AccountType, accountNumber: String, amount: B
 // The account class itself is pretty simple - no surprises here, and not much safety
 class Account {
   private var bal: BigDecimal = 0
-  def balance = bal
+  def balance =  bal
   def deposit(amnt: BigDecimal) = bal += amnt
   def withdrawal(amnt: BigDecimal) = bal -= amnt
 }

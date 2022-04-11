@@ -1,3 +1,13 @@
+import scala.collection.mutable
+def mayReturnNull(f: => Boolean): String = {
+  if(f) null else "not null"
+}
+
+val o1 = Option(mayReturnNull(true))
+o1.map(_.toString)
+val o2 = Option(mayReturnNull(false))
+o2.map(_.toString)
+
 val s1: String = "hello"
 val s2: String = null // no no no no no
 
@@ -5,6 +15,7 @@ val os1 = Option(s1)
 val os2 = Option(s2)
 
 os1.orNull
+//os1.getOrElse(null)
 os2.orNull
 
 
@@ -16,7 +27,8 @@ jl.add(1); jl.add(2); jl.add(3)
 
 import scala.collection.JavaConverters._
 
-jl.asScala.map(_ * 2)
+val r: mutable.Buffer[Int] = jl.asScala.map(_ * 2)
+val r: List[Int] = jl.asScala.toList.map(_ * 2)
 
 
 // Java method signature:

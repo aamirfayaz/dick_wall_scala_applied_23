@@ -1,11 +1,17 @@
 import scala.concurrent._
 import duration._
 import ExecutionContext.Implicits.global
+import scala.util.Try
 
-val f1 = Future { Thread.sleep(1000); 10}
-val f2 = f1.map(_ * 10)
+val fS = Future.successful("done") //check toString method
+val tF: Future[Int] = Future.fromTry(Try(1 / 0))
+val f1: Future[Int] = Future { Thread.sleep(100); 10}
+val f2: Future[Int] = f1.map(_ * 10)
+val fI:Future[Int] = Future(10)
+val r: Option[Try[Int]] = fI.value
 
 f1.value
+val r: Option[Int] = f1.value.flatMap(_.toOption)
 f1.isCompleted
 f2.value
 f2.isCompleted
@@ -35,7 +41,7 @@ val fb = Future { Thread.sleep(1000); 2 }
 val fc = Future(3)
 val fd = Future { Thread.sleep(500); "The answer is"}
 
-val fRes = for {
+val fRes: Future[String] = for {
   a <- fa
   b <- fb
   c <- fc

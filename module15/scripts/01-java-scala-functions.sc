@@ -1,3 +1,4 @@
+//SAM - single abstract method
 case class Person(name: String, age: Int)
 
 import java.util.{Arrays, Comparator}
@@ -16,6 +17,7 @@ Arrays.sort(javaArray, comp1)
 
 javaArray
 
+//using sam
 Arrays.sort(javaArray, (p1: Person, p2: Person) => p2.age - p1.age)
 
 javaArray

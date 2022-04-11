@@ -2,6 +2,7 @@ val tuple3 = (1, "aamir", true)
 val (id:Int, name: String, mad:Boolean) = tuple3
 val (a, b, c) = tuple3
 
+val x = 12
 val numbersMap = Map(1 -> "one", 2 -> "two", 3 -> "three")
 
 for ((k, v) <- numbersMap) {
@@ -16,14 +17,13 @@ val harry = Person("Harry", None, Some(Address(
 )))
 
 val sally = Person("Sally", Some("321-222-3344"), None)
-
+x
 val sally2 = sally.copy(address = harry.address, phone = Some("321-333-2211"))
 val harry2 = harry.copy(phone = sally2.phone)
 
 val Person(name, phone, Some(Address(_, _, postCode))) = harry
 // but match error below
 // val Person(name2, phone2, Some(Address(_, _, postCode2))) = sally
-
 
 val people: List[Person] = List(harry, harry2, sally, sally2)
 
